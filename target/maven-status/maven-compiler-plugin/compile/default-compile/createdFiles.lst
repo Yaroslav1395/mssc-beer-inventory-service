@@ -1,0 +1,12 @@
+sakhno\sfg\beer\inventory\service\BeerInventoryApplication.class
+sakhno\sfg\beer\inventory\service\web\controllers\BeerInventoryController.class
+sakhno\sfg\beer\inventory\service\domain\BeerInventoryEntity$BeerInventoryEntityBuilder.class
+sakhno\sfg\beer\inventory\service\web\model\BeerInventoryDto$BeerInventoryDtoBuilder.class
+sakhno\sfg\beer\inventory\service\domain\BaseEntity.class
+sakhno\sfg\beer\inventory\service\domain\BeerInventoryEntity.class
+sakhno\sfg\beer\inventory\service\web\mappers\DateMapper.class
+sakhno\sfg\beer\inventory\service\web\mappers\BeerInventoryMapperImpl.class
+sakhno\sfg\beer\inventory\service\web\model\BeerInventoryDto.class
+sakhno\sfg\beer\inventory\service\repositories\BeerInventoryRepository.class
+sakhno\sfg\beer\inventory\service\bootstrap\BeerInvntoryBootstrap.class
+sakhno\sfg\beer\inventory\service\web\mappers\BeerInventoryMapper.class
