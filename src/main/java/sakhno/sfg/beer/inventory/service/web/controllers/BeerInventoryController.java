@@ -23,7 +23,7 @@ public class BeerInventoryController {
 
     @GetMapping("api/v1/beer/{beerId}/inventory")
     List<BeerInventoryDto> listBeersById(@PathVariable UUID beerId){
-        log.debug("Поиск пива на складе по идентификатору:" + beerId);
+        log.info("Поиск пива на складе по идентификатору:{}", beerId);
 
         return beerInventoryRepository.findAllByBeerId(beerId)
                 .stream()
