@@ -28,8 +28,8 @@ public class AllocationServiceImpl implements AllocationService{
                 allocateBeerOrderLine(beerOrderLine);
             }
             totalOrdered.set(totalOrdered.get() + beerOrderLine.getOrderQuantity());
-            totalAllocated.set(totalAllocated.get() + beerOrderLine.getQuantityAllocated() != null ?
-                    beerOrderLine.getQuantityAllocated() : 0);
+            totalAllocated.set(totalAllocated.get() + (beerOrderLine.getQuantityAllocated() != null ?
+                    beerOrderLine.getQuantityAllocated() : 0));
         });
 
         log.info("Заказ на: {} единиц, распределено на: {} единиц.", totalOrdered, totalAllocated);
