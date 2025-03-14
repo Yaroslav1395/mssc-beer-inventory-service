@@ -71,6 +71,12 @@
             <artifactId>spring-boot-starter-artemis</artifactId>
         </dependency>
 
+        <!--Зависимости для валидации данных-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+
         <!--Зависимости для упрощения разработки-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
