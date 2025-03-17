@@ -15,6 +15,10 @@ import sakhno.sfg.beer.inventory.service.repositories.BeerInventoryRepository;
 public class NewInventoryListener {
     private final BeerInventoryRepository beerInventoryRepository;
 
+    /**
+     * Метод прослушивает очередь поступления на склад пива
+     * @param event - объект события поступления пива
+     */
     @JmsListener(destination = JmsConfig.NEW_INVENTORY_QUEUE)
     public void listenBrewingBeer(NewInventoryEvent event) {
         log.info("Новый инвентарный запас от поставщика для пива {} в количестве: {}",

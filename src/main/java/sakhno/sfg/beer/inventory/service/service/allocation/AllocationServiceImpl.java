@@ -16,6 +16,12 @@ import java.util.concurrent.atomic.AtomicInteger;
 @Slf4j
 public class AllocationServiceImpl implements AllocationService{
     private final BeerInventoryRepository beerInventoryRepository;
+
+    /**
+     * Метод позволяет распределить заказ на пиво
+     * @param beerOrderDto - данные о заказе
+     * @return - результат распределения
+     */
     @Override
     public Boolean allocateOrder(BeerOrderDto beerOrderDto) {
         log.info("Распределение заказа с id: {}", beerOrderDto.getId());
@@ -36,6 +42,10 @@ public class AllocationServiceImpl implements AllocationService{
         return totalOrdered.get() == totalAllocated.get();
     }
 
+    /**
+     * Метод распределяет каждую позицию пива из заказа
+     * @param beerOrderLine - позиция заказа
+     */
     private void allocateBeerOrderLine(BeerOrderLineDto beerOrderLine) {
         List<BeerInventoryEntity> beerInventoryEntityList = beerInventoryRepository.findAllByUpc(
                 beerOrderLine.getUpc());
