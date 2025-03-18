@@ -10,4 +10,6 @@ public interface AllocationService {
      * @return - результат распределения
      */
     Boolean allocateOrder(BeerOrderDto beerOrderDto);
+
+    void deallocateOrder(BeerOrderDto beerOrderDto);
 }
