@@ -21,7 +21,7 @@ public class BeerInventoryController {
     private final BeerInventoryRepository beerInventoryRepository;
     private final BeerInventoryMapper beerInventoryMapper;
 
-    @GetMapping("api/v1/beer/{beerId}/inventory")
+    @GetMapping("api/v1/inventory/beer/{beerId}")
     List<BeerInventoryDto> listBeersById(@PathVariable UUID beerId){
         log.info("Поиск пива на складе по идентификатору:{}", beerId);
 
