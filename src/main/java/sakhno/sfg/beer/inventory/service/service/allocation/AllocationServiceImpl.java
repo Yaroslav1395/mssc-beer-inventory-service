@@ -16,6 +16,12 @@ import java.util.concurrent.atomic.AtomicInteger;
 @Slf4j
 public class AllocationServiceImpl implements AllocationService{
     private final BeerInventoryRepository beerInventoryRepository;
+
+    /**
+     * Метод позволяет распределить заказ на пиво
+     * @param beerOrderDto - данные о заказе
+     * @return - результат распределения
+     */
     @Override
     public Boolean allocateOrder(BeerOrderDto beerOrderDto) {
         log.info("Распределение заказа с id: {}", beerOrderDto.getId());
@@ -36,6 +42,24 @@ public class AllocationServiceImpl implements AllocationService{
         return totalOrdered.get() == totalAllocated.get();
     }
 
+    @Override
+    public void deallocateOrder(BeerOrderDto beerOrderDto) {
+        beerOrderDto.getBeerOrderLines().forEach(beerOrderLine -> {
+            BeerInventoryEntity beerInventory = BeerInventoryEntity.builder()
+                    .beerId(beerOrderLine.getBeerId())
+                    .upc(beerOrderLine.getUpc())
+                    .quantityOnHand(beerOrderLine.getOrderQuantity())
+                    .build();
+
+            BeerInventoryEntity savedBeerInventory = beerInventoryRepository.save(beerInventory);
+            log.info("Отмена распределения заказа пива с id: {} на: {} единиц", savedBeerInventory.getId(), savedBeerInventory.getQuantityOnHand());
+        });
+    }
+
+    /**
+     * Метод распределяет каждую позицию пива из заказа
+     * @param beerOrderLine - позиция заказа
+     */
     private void allocateBeerOrderLine(BeerOrderLineDto beerOrderLine) {
         List<BeerInventoryEntity> beerInventoryEntityList = beerInventoryRepository.findAllByUpc(
                 beerOrderLine.getUpc());
@@ -54,6 +78,9 @@ public class AllocationServiceImpl implements AllocationService{
             } else if (inventory > 0) { //partial allocation
                 beerOrderLine.setQuantityAllocated(allocatedQty + inventory);
                 beerInventory.setQuantityOnHand(0);
+                //beerInventoryRepository.delete(beerInventory);
+            }
+            if(beerInventory.getQuantityOnHand() != null && beerInventory.getQuantityOnHand() == 0) {
                 beerInventoryRepository.delete(beerInventory);
             }
         });

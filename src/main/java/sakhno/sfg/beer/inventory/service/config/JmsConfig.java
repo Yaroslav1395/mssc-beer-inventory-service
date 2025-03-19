@@ -13,6 +13,7 @@ public class JmsConfig {
     public static final String NEW_INVENTORY_QUEUE = "NEW_INVENTORY_QUEUE";
     public static final String ALLOCATION_ORDER_QUEUE = "ALLOCATION_ORDER_QUEUE";
     public static final String ALLOCATION_ORDER_RESPONSE_QUEUE = "ALLOCATION_ORDER_RESPONSE_QUEUE";
+    public static final String DEALLOCATE_ORDER_QUEUE = "DEALLOCATE_ORDER_QUEUE";
 
 
     /**
