@@ -30,7 +30,7 @@ public class AllocationListener {
         try {
             Boolean allocationResult = allocationService.allocateOrder(allocateOrderRequest.getBeerOrderDto());
             builder.pendingInventory(!allocationResult);
-
+            builder.allocationError(false);
         }catch (Exception e) {
             log.error("Размещение провалилось для заказа с id: {}", allocateOrderRequest.getBeerOrderDto().getId());
             builder.allocationError(true);
