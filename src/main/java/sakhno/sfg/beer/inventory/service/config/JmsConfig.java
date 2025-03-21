@@ -6,6 +6,11 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.jms.support.converter.MappingJackson2MessageConverter;
 import org.springframework.jms.support.converter.MessageConverter;
 import org.springframework.jms.support.converter.MessageType;
+import sakhno.sfg.beer.inventory.service.web.model.events.AllocateOrderRequest;
+import sakhno.sfg.beer.inventory.service.web.model.events.AllocateOrderResult;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @Configuration
 public class JmsConfig {
@@ -32,6 +37,10 @@ public class JmsConfig {
     public MessageConverter messageConverter(ObjectMapper objectMapper) {
         MappingJackson2MessageConverter converter = new MappingJackson2MessageConverter();
         converter.setTargetType(MessageType.TEXT);
+        Map<String, Class<?>> typeIdMappings = new HashMap<>();
+        typeIdMappings.put("AllocateOrderRequest", AllocateOrderRequest.class);
+        typeIdMappings.put("AllocateOrderResult", AllocateOrderResult.class);
+        converter.setTypeIdMappings(typeIdMappings);
         converter.setTypeIdPropertyName("_type");
         converter.setObjectMapper(objectMapper);
         return converter;
