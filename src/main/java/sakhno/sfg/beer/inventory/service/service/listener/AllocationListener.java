@@ -32,7 +32,6 @@ public class AllocationListener {
             builder.pendingInventory(!allocationResult);
             builder.allocationError(false);
         }catch (Exception e) {
-            e.printStackTrace();
             log.error("Размещение провалилось для заказа с id: {}", allocateOrderRequest.getBeerOrderDto().getId());
             builder.allocationError(true);
         }
