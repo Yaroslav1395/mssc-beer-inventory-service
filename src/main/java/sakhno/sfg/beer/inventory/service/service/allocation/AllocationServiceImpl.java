@@ -41,6 +41,10 @@ public class AllocationServiceImpl implements AllocationService{
         return totalOrdered.get() == totalAllocated.get();
     }
 
+    /**
+     * Метод позволяет убрать пиво из очереди на поставку
+     * @param beerOrderDto - данные о заказе
+     */
     @Override
     public void deallocateOrder(BeerOrderDto beerOrderDto) {
         beerOrderDto.getBeerOrderLines().forEach(beerOrderLine -> {
@@ -69,15 +73,14 @@ public class AllocationServiceImpl implements AllocationService{
             int allocatedQty = (beerOrderLine.getQuantityAllocated() == null) ? 0 : beerOrderLine.getQuantityAllocated();
             int qtyToAllocate = orderQty - allocatedQty;
 
-            if(inventory >= qtyToAllocate) { //full allocation
+            if(inventory >= qtyToAllocate) {
                 inventory = inventory - qtyToAllocate;
                 beerOrderLine.setQuantityAllocated(orderQty);
                 beerInventory.setQuantityOnHand(inventory);
                 beerInventoryRepository.save(beerInventory);
-            } else if (inventory > 0) { //partial allocation
+            } else if (inventory > 0) {
                 beerOrderLine.setQuantityAllocated(allocatedQty + inventory);
                 beerInventory.setQuantityOnHand(0);
-                //beerInventoryRepository.delete(beerInventory);
             }
             if(beerInventory.getQuantityOnHand() != null && beerInventory.getQuantityOnHand() == 0) {
                 beerInventoryRepository.delete(beerInventory);

@@ -11,5 +11,9 @@ public interface AllocationService {
      */
     Boolean allocateOrder(BeerOrderDto beerOrderDto);
 
+    /**
+     * Метод позволяет убрать пиво из очереди на поставку
+     * @param beerOrderDto - данные о заказе
+     */
     void deallocateOrder(BeerOrderDto beerOrderDto);
 }

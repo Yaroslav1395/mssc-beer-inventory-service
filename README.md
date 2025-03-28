@@ -7,3 +7,7 @@
 - JDBC URL: jdbc:h2:file:~/beer/db/beer-inventory-service/beer_inventory_service
 - Пользователь: admin
 - Пароль: 12345
+
+Является клиентом:
+- Eureka
+- Config Server
