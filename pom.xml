@@ -61,6 +61,12 @@
             <artifactId>spring-cloud-starter-bootstrap</artifactId>
         </dependency>
 
+        <!--Зависимости для безопасности-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+
         <!--Зависимости для трассировки и логирования-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
