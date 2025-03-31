@@ -8,7 +8,7 @@ import sakhno.sfg.beer.inventory.service.web.model.BeerInventoryDto;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2025-03-30T12:30:25+0600",
+    date = "2025-03-31T21:59:01+0600",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
 )
 @Component
