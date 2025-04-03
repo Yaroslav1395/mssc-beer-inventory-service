@@ -8,8 +8,8 @@ import sakhno.sfg.beer.inventory.service.web.model.BeerInventoryDto;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2025-03-31T21:59:01+0600",
-    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Oracle Corporation)"
+    date = "2025-04-03T12:20:46+0600",
+    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 19.0.2 (Amazon.com Inc.)"
 )
 @Component
 public class BeerInventoryMapperImpl implements BeerInventoryMapper {
