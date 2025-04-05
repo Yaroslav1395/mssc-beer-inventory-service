@@ -29,7 +29,6 @@
         <java.version>17</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
-        <actuator.version>3.4.2</actuator.version>
         <spring-cloud.version>2024.0.0</spring-cloud.version>
         <org.mapstruct.version>1.5.3.Final</org.mapstruct.version>
         <jaxb.version>2.3.0</jaxb.version>
